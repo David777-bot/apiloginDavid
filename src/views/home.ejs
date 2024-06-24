@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/estilos.css">
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.7/css/dataTables.dataTables.css">
+    <link href="./css/datatables.min.css" rel="stylesheet">
+
+</head>
+<body>
+  <div class="container bg-dark d-flex justify-content-center align-items-center">
+    <img src="img/Logo.png" alt="Logo" class="img-fluid m-3" style="max-width: 100px;">
+    <h1 class="text-center m-3">MACHINE-CONTROL SENA</h1>
+  <!-- <nav class="navbar bg-dark navbar-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="./assets/img/Logo.png" alt="" width="30" height="30" class="d-inline-block align-text-top">
+        MC-SENA
+      </a>
+    </div>
+  </nav> -->
+ </div> 
+ 
+<!-- Modal -->
+<div class="modal fade" id="addModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Disponibilidad de máquinaria agrícola</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h3 class="text-center alert alert-primary">Consulta aquí</h3>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">N° de la ficha </label>
+          <input type="text" class="form-control" name="nombre">
+        </div>      
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary" >Consultar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Solicitud -->
+<div class="modal slide" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Solicitud de préstamo</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+      <div class="modal-body">
+          <form class="formulario col-12 p-4 text-center" method="POST">
+              <h3 class="text-center alert alert-primary">Solicitud de préstamo - Máquinaria Hachón SENA</h3>
+              <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">N° de la ficha </label>
+                  <input type="text" class="form-control" name="nombre" required>
+              </div>
+              <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Nombre del instructor encargado</label>
+                  <input type="text" class="form-control" name="nombreinstructor" required>
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Escoge el elemento que deseas para el préstamo </label>
+                <select class="form-select" aria-label="Default select example" name="elementomaquina" required>
+                  <option selected>Seleccione un elemento</option>
+                  <option value="1">Tractor agricola</option>
+                  <option value="2">Implemento agricola</option>
+                </select>           
+              </div>
+              <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Fecha de prestámo</label>
+                  <input type="date" class="form-control" name="prestamo" required>
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Inspección preoperacional de la máquina</label>
+                <select class="form-select" aria-label="Default select example" name="preop" required>
+                  <option selected>Seleccione el resultado de la inspeccion</option>
+                  <option value="1">Aprobado</option>
+                  <option value="2">Desaprobado</option>
+                  </select>                         
+              </div>
+              <button type="submit" class="btn btn-primary" name="btnregistrar" value="Ok">Registrar</button>
+          </form>
+      </div>
+      <div class="modal-footer">
+
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- Button trigger modal -->
+
+      <div class="container-fluid background" id="contenido">
+        <div class="col-md-12 d-flex justify-content-center align-item-center">
+          <button type="button" class="btn btn-primary m-4" data-bs-toggle="modal" data-bs-target="#addModal">
+              Solicita aquí tu prestámo
+          </button>
+          <button type="button" class="btn btn-primary m-4" data-bs-toggle="modal" data-bs-target="#addModal1">
+            Consulta Máquinaria disponible
+          </button>
+          <a href="/login" class="boton-login">Iniciar sesión</a>
+      </div>
+
+      <div class="container">
+        <table id="tabledatos" class="table">
+          <thead class="bg-dark">
+            <tr class="text-center">
+              <th class="text-center" scope="col">Id Solicitud</th>
+              <th class="text-center" scope="col">Nombre del instructor</th>
+              <th class="text-center" scope="col">Nombre de la ficha</th>
+              <th class="text-center" scope="col">Elemento prestado</th>
+              <th class="text-center" scope="col">Fecha de prestámo</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody id="contenido">
+            <!-- contenido -->
+          </tbody>
+        </table>
+        </div>
+      </div>
+    
+
+    <script src="https://cdn.datatables.net/2.0.7/js/dataTables.js"></script>
+    <script src="./js/datatables.min.js"></script>
+    <script src="./js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
